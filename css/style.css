@@ -1,0 +1,50 @@
+body {
+  text-align: center;
+  background-image: url("http://i0.wp.com/www.naturphilosophie.co.uk/wp-content/uploads/2014/04/Sunflower.jpg");
+}
+#calculator {
+  text-align: center;
+  margin: 30px auto;
+  width: 350px;
+  height: 575px;
+  border: 0.1px solid black;
+  border-radius: 25px;
+  background-color: dimgray;
+  box-shadow: 0px 1px 15px;
+}
+#input {
+  min-width: 86%;
+  max-width: 30%;
+  margin: 40px auto;
+  margin-bottom: 9px;
+  height: 110px !important;
+  font-size: 30px !important;
+  border-radius: 10px !important;
+  border-color: gray !important;
+  background-color: darkkhaki;
+  box-shadow: inset 0px 0px 10px;
+}
+button:focus {
+  color: silver;
+  border-color: gray !important;
+}
+.btn {
+  width: 55px;
+  height: 60px;
+  font-size: 18px;
+  box-shadow: 1px 1px 3px black;
+  background-color: silver;
+  margin-top: 5px;
+  color: black;
+  font-weight: bold;
+}
+.zero {
+  width: 114.5px;
+}
+.upper {
+  height: 40px;
+}
+.upper1 {
+  height: 40px;
+  margin-bottom: 35px;
+}
