@@ -11,7 +11,6 @@ $(function() {
   
   //Add button content to string
   function operation() {
-    console.log(opStr.length);
     if (opStr.length > 17) {
       $("#input").html("MAX LIMIT REACHED");
       opStr = "";
@@ -19,23 +18,24 @@ $(function() {
     var misc = "+-^x÷!";
     var e = event.target;
     //Prevent operators from being added first/after non-numbers
-    if ((opStr[opStr.indexOf(" ") - 1] === "π" || opStr[opStr.indexOf(" ") - 1] === "e") || opStr[opStr.indexOf(" ") - 1] === "0" && misc.indexOf(e.textContent) !== -1) {
+    if ((opStr[opStr.indexOf(" ") - 1] === "π" || opStr[opStr.indexOf(" ") - 1] === "e") && misc.indexOf(e.textContent) !== -1) {
       opStr += e.textContent + " ";
       $("#input").html(opStr)
     }
-    else if (opStr === "" && misc.indexOf(e.textContent) !== -1) {
+    else if (opStr === "" && (misc.indexOf(e.textContent) !== -1 || e.textContent === "0")) {
       event.preventDefault();
     }
     else if (!Number(opStr[opStr.length - 1]) && misc.indexOf(e.textContent) !== -1) {
+      if (opStr[opStr.length - 1] === "0") {
+        opStr += " " + e.textContent + " ";
+        $("#input").html(opStr);
+        return;
+      }
       event.preventDefault();
     }
     else {
-      if (!Number(e.textContent)) {
-        if (e.textContent === "0") {
-          opStr += e.textContent + " ";
-          $("#input").html(opStr);
-        }
-        else if (opStr === "") {
+      if (!Number(e.textContent) && e.textContent !== "0") {
+        if (opStr === "") {
           opStr += e.textContent + " ";
           $("#input").html(opStr)
         }
@@ -55,7 +55,6 @@ $(function() {
   function evaluate() {
     endStr = ""; 
     var opStrArr = opStr.split(" ");
-    console.log(opStrArr);
     if (opStrArr[opStrArr.indexOf("e") - 1] === "") {
       opStrArr.splice(opStrArr.indexOf("e") - 1, 1);
     }
@@ -181,7 +180,6 @@ $(function() {
         }
       }
       var calc = eval(endStr);
-      console.log(calc);
         if(calc.toString().length > 18) {
           $("#input").html("MAX LIMIT REACHED");
         }
